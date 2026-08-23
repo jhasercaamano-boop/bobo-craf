@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+<title>NEXO</title>
+
+</head>
+
+<body>
+
+
+<!-- ================= GIRAR CELULAR ================= -->
+
+<div id="girapantalla">
+
+  <p>🔄<br>Girá tu celular para jugar</p>
+
+</div>
+
+
+<!-- ================= MENÚ ================= -->
+
+<div id="menu">
+
+  <h1>NEXO</h1>
+
+  <p>esto es una pre beta</p>
+
+  <div id="botonesmenu">
+
+    <button id="jugar">
+      <img src="botondeplay (1).png" id="play">
+    </button>
+
+    <button id="salir">
+      SALIR
+    </button>
+
+    <button id="opciones">
+      OPCIONES
+    </button>
+
+  </div>
+
+</div>
+
+
+
+<!-- ================= JUEGO ================= -->
+
+<div id="pantalladejuego">
+
+
+  <!-- MUNDO Y ENEMIGOS -->
+
+  <div id="camara">
+
+    <div id="mundo">
+
+      <img
+        src="mundo.png"
+        id="fondoMundo"
+      >
+
+      <img
+        src="enemigo1.png"
+        id="enemigo1"
+      >
+
+      <img
+        src="enemigo2.png"
+        id="enemigo2"
+      >
+
+    </div>
+
+  </div>
+
+
+  <!-- JUGADOR -->
+
+  <img
+    src="jugador1.png"
+    id="jugador"
+  >
+
+
+  <!-- CONTROLES -->
+
+  <div id="controles">
+
+    <button id="saltar">
+      ⬆️
+    </button>
+
+    <button id="izquierda">
+      ⬅️
+    </button>
+
+    <button id="derecha">
+      ➡️
+    </button>
+
+  </div>
+
+</div>
+
+
+
+<style>
+
+
+/* ================= GIRAR CELULAR ================= */
+
+#girapantalla {
+
+  display: none;
+
+  position: fixed;
+  inset: 0;
+
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+
+  background: #0a0a0a;
+
+  color: #ffffff;
+
+  z-index: 999999;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  font-size: 26px;
+
+  font-weight: bold;
+
+  padding: 20px;
+
+  box-sizing: border-box;
+
+}
+
+
+@media (orientation: portrait) {
+
+  #girapantalla {
+
+    display: flex;
+
+  }
+
+}
+
+
+/* ================= GENERAL ================= */
+
+html,
+body {
+
+  margin: 0;
+  padding: 0;
+
+  width: 100%;
+  height: 100%;
+  height: 100dvh;
+
+  overflow: hidden;
+
+}
+
+
+/* ================= MENÚ ================= */
+
+#menu {
+
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+
+  background-image:
+    url("iconomenu.png");
+
+  background-size: 300% auto ;
+
+  background-position: center;
+
+  background-repeat: no-repeat;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  align-items: center;
+
+  text-align: center;
+
+  overflow-y: auto;
+
+  padding: 10px 0;
+
+  box-sizing: border-box;
+
+}
+
+
+#menu h1 {
+
+  font-size: 45px;
+
+  margin-bottom: 10px;
+
+}
+
+
+#menu p {
+
+  font-size: 20px;
+
+  margin-bottom: 25px;
+
+}
+
+
+/* ================= BOTONES DEL MENÚ ================= */
+
+#botonesmenu {
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 25px;
+
+}
+
+
+/* BOTÓN PLAY */
+
+#jugar {
+
+  width: 140px;
+  height: 140px;
+
+  padding: 0;
+  margin: 0;
+
+  border: none;
+
+  background: transparent;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+}
+
+
+/* IMAGEN PLAY */
+
+#play {
+
+  width: 140px;
+  height: 140px;
+
+  display: block;
+
+  object-fit: contain;
+
+}
+
+
+/* BOTONES SALIR Y OPCIONES */
+
+#salir,
+#opciones {
+
+  width: 260px;
+  height: 80px;
+
+  font-size: 28px;
+
+  font-weight: bold;
+
+  border-radius: 12px;
+
+}
+
+
+/* ================= JUEGO ================= */
+
+#pantalladejuego {
+
+  position: relative;
+
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+
+  overflow: hidden;
+
+  display: none;
+
+}
+
+
+/* ================= CÁMARA ================= */
+
+#camara {
+
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+
+  z-index: 1;
+
+}
+
+
+/* ================= MUNDO ================= */
+
+#mundo {
+
+  position: absolute;
+
+  left: 0;
+
+  top: 0;
+
+  width: 100%;
+
+  height: 100%;
+
+  background-color: #16112b;
+
+}
+
+
+/* ================= FONDO (una sola imagen) ================= */
+
+#fondoMundo {
+
+  position: absolute;
+
+  left: 0;
+
+  top: -50px;
+
+  width: 100%;
+
+  height: calc(100% + 50px);
+
+  object-fit: cover;
+
+  object-position: center;
+
+  display: block;
+
+  image-rendering: pixelated;
+
+  pointer-events: none;
+
+  user-select: none;
+
+}
+
+
+/* ================= ENEMIGO 1 ================= */
+
+#enemigo1 {
+
+  position: absolute;
+
+  left: 250px;
+
+  top: 47%;
+
+  width: clamp(45px, 10vh, 100px);
+
+  z-index: 5;
+
+}
+
+
+/* ================= ENEMIGO 2 ================= */
+
+#enemigo2 {
+
+  position: absolute;
+
+  left: 200px;
+
+  top: 47%;
+
+  width: clamp(45px, 10vh, 100px);
+
+  z-index: 5;
+
+}
+
+
+/* ================= JUGADOR ================= */
+
+#jugador {
+
+  position: absolute;
+
+  left: 100px;
+
+  top: 47%;
+
+  width: clamp(60px, 14vh, 130px);
+
+  z-index: 100;
+
+}
+
+
+/* ================= CONTROLES ================= */
+
+#controles {
+
+  position: absolute;
+
+  left: auto;
+
+  right: 20px;
+
+  bottom: 30px;
+
+  display: flex;
+
+  gap: 15px;
+
+  z-index: 9999;
+
+  pointer-events: none;
+
+}
+
+
+#controles button {
+
+  width: clamp(50px, 9vh, 85px);
+
+  height: clamp(50px, 9vh, 85px);
+
+  font-size: clamp(26px, 5vh, 46px);
+
+  touch-action: none;
+
+  user-select: none;
+
+  -webkit-user-select: none;
+
+  pointer-events: auto;
+
+  background: rgba(255, 255, 255, 0.25);
+
+  border: 2px solid rgba(255, 255, 255, 0.5);
+
+  border-radius: 50%;
+
+}
+
+
+/* ================= HORIZONTAL ================= */
+
+@media (orientation: landscape) {
+
+  #pantalladejuego {
+
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+
+  }
+
+
+  #menu {
+
+    justify-content: flex-start;
+
+    padding-top: 12px;
+
+  }
+
+  #menu h1 {
+
+    font-size: 34px;
+
+    margin-bottom: 4px;
+
+  }
+
+  #menu p {
+
+    font-size: 16px;
+
+    margin-bottom: 10px;
+
+  }
+
+  #botonesmenu {
+
+    gap: 14px;
+
+  }
+
+  #jugar {
+
+    width: 95px;
+
+    height: 95px;
+
+  }
+
+  #play {
+
+    width: 95px;
+
+    height: 95px;
+
+  }
+
+  #salir,
+  #opciones {
+
+    width: 210px;
+
+    height: 54px;
+
+    font-size: 20px;
+
+  }
+
+}
+
+</style>
+
+
+
+<script>
+
+
+/* ================= ELEMENTOS ================= */
+
+const boton =
+  document.getElementById("jugar");
+
+
+const salir =
+  document.getElementById("salir");
+
+
+const opciones =
+  document.getElementById("opciones");
+
+
+const menu =
+  document.getElementById("menu");
+
+
+const juego =
+  document.getElementById(
+    "pantalladejuego"
+  );
+
+
+const jugador =
+  document.getElementById(
+    "jugador"
+  );
+
+
+const mundo =
+  document.getElementById(
+    "mundo"
+  );
+
+
+const fondoMundo =
+  document.getElementById(
+    "fondoMundo"
+  );
+
+
+const izquierda =
+  document.getElementById(
+    "izquierda"
+  );
+
+
+const derecha =
+  document.getElementById(
+    "derecha"
+  );
+
+
+const saltar =
+  document.getElementById(
+    "saltar"
+  );
+
+
+const enemigo1 =
+  document.getElementById(
+    "enemigo1"
+  );
+
+
+const enemigo2 =
+  document.getElementById(
+    "enemigo2"
+  );
+
+
+/* ================= POSICIÓN ================= */
+
+let x = 100;
+
+
+/* ================= ENEMIGOS ================= */
+
+let enemigo1X = 250;
+
+let enemigo2X = 200;
+
+const radioDeteccion = 300;
+
+const velocidadEnemigo = 1.5;
+
+const separacionEnemigo1 = 40;
+
+const separacionEnemigo2 = 90;
+
+
+/* ================= CÁMARA ================= */
+
+let camaraX = 0;
+
+
+/* ================= MOVIMIENTO ================= */
+
+let moviendoIzquierda = false;
+
+let moviendoDerecha = false;
+
+
+/* ================= SALTO ================= */
+
+let saltoY = 0;
+
+let velocidadY = 0;
+
+let saltando = false;
+
+const gravedad = 0.8;
+
+const fuerzaSalto = 15;
+
+let direccion = 1;
+
+
+function intentarSaltar() {
+
+  if (!saltando) {
+
+    saltando = true;
+
+    velocidadY = fuerzaSalto;
+
+  }
+
+}
+
+
+/* ================= TECLADO ================= */
+
+document.addEventListener(
+  "keydown",
+  function(event) {
+
+
+    if (event.key === "ArrowRight") {
+
+      x += 10;
+
+      direccion = 1;
+
+    }
+
+
+    if (event.key === "ArrowLeft") {
+
+      if (x > 0) {
+
+        x -= 10;
+
+        if (x < 0) {
+
+          x = 0;
+
+        }
+
+        direccion = -1;
+
+      }
+
+    }
+
+
+    if (event.key === "ArrowUp" || event.key === " ") {
+
+      intentarSaltar();
+
+    }
+
+  }
+);
+
+
+/* ================= DERECHA ================= */
+
+derecha.onpointerdown =
+function(event) {
+
+  event.preventDefault();
+
+  moviendoDerecha = true;
+
+  derecha.setPointerCapture(
+    event.pointerId
+  );
+
+};
+
+
+derecha.onpointerup =
+function(event) {
+
+  event.preventDefault();
+
+  moviendoDerecha = false;
+
+};
+
+
+derecha.onpointercancel =
+function() {
+
+  moviendoDerecha = false;
+
+};
+
+
+/* ================= IZQUIERDA ================= */
+
+izquierda.onpointerdown =
+function(event) {
+
+  event.preventDefault();
+
+  moviendoIzquierda = true;
+
+  izquierda.setPointerCapture(
+    event.pointerId
+  );
+
+};
+
+
+izquierda.onpointerup =
+function(event) {
+
+  event.preventDefault();
+
+  moviendoIzquierda = false;
+
+};
+
+
+izquierda.onpointercancel =
+function() {
+
+  moviendoIzquierda = false;
+
+};
+
+
+/* ================= SALTAR ================= */
+
+saltar.onpointerdown =
+function(event) {
+
+  event.preventDefault();
+
+  intentarSaltar();
+
+  saltar.setPointerCapture(
+    event.pointerId
+  );
+
+};
+
+
+/* ================= SOLTAR ================= */
+
+document.addEventListener(
+  "pointerup",
+  function() {
+
+    moviendoDerecha = false;
+
+    moviendoIzquierda = false;
+
+  }
+);
+
+
+/* ================= CÁMARA ================= */
+
+function actualizarJuego() {
+
+
+  /* DERECHA */
+
+  if (moviendoDerecha) {
+
+    x += 3;
+
+    direccion = 1;
+
+  }
+
+
+  /* IZQUIERDA */
+
+  if (moviendoIzquierda) {
+
+    if (x > 0) {
+
+      x -= 3;
+
+      if (x < 0) {
+
+        x = 0;
+
+      }
+
+      direccion = -1;
+
+    }
+
+  }
+
+
+  /* SALTO (física simple) */
+
+  if (saltando) {
+
+    saltoY += velocidadY;
+
+    velocidadY -= gravedad;
+
+    if (saltoY <= 0) {
+
+      saltoY = 0;
+
+      velocidadY = 0;
+
+      saltando = false;
+
+    }
+
+  }
+
+
+  /* ENEMIGOS PERSIGUEN AL JUGADOR (solo si está cerca) */
+
+  const destino1 =
+    x - separacionEnemigo1;
+
+  const destino2 =
+    x - separacionEnemigo2;
+
+  if (
+    Math.abs(x - enemigo1X) <
+    radioDeteccion
+  ) {
+
+    if (destino1 > enemigo1X) {
+
+      enemigo1X += velocidadEnemigo;
+
+    } else if (destino1 < enemigo1X) {
+
+      enemigo1X -= velocidadEnemigo;
+
+    }
+
+  }
+
+  if (
+    Math.abs(x - enemigo2X) <
+    radioDeteccion
+  ) {
+
+    if (destino2 > enemigo2X) {
+
+      enemigo2X += velocidadEnemigo;
+
+    } else if (destino2 < enemigo2X) {
+
+      enemigo2X -= velocidadEnemigo;
+
+    }
+
+  }
+
+  enemigo1.style.left =
+    enemigo1X + "px";
+
+  enemigo2.style.left =
+    enemigo2X + "px";
+
+
+  /*
+  LÍMITE DEL MUNDO
+  (ancho real de la
+  imagen de fondo, para
+  que la cámara nunca
+  muestre más allá del
+  borde de la imagen)
+  */
+
+  const anchoMundo =
+    fondoMundo.offsetWidth;
+
+  const camaraMax =
+    Math.max(
+      0,
+      anchoMundo -
+        window.innerWidth
+    );
+
+
+  /*
+  CÁMARA SIGUE AL JUGADOR
+  */
+
+  camaraX =
+    x -
+    (window.innerWidth / 2);
+
+
+  if (camaraX < 0) {
+
+    camaraX = 0;
+
+  }
+
+
+  if (camaraX > camaraMax) {
+
+    camaraX = camaraMax;
+
+  }
+
+
+  if (
+    anchoMundo > 0 &&
+    x > anchoMundo - jugador.offsetWidth
+  ) {
+
+    x =
+      anchoMundo -
+      jugador.offsetWidth;
+
+  }
+
+
+  /*
+  MOVEMOS EL MUNDO
+  */
+
+  mundo.style.transform =
+    "translateX(" +
+    (-camaraX) +
+    "px)";
+
+
+  /*
+  JUGADOR VISIBLE
+  */
+
+  jugador.style.left =
+    (x - camaraX) +
+    "px";
+
+  jugador.style.transform =
+    "translateY(-" +
+    saltoY +
+    "px) scaleX(" +
+    direccion +
+    ")";
+
+
+  requestAnimationFrame(
+    actualizarJuego
+  );
+
+}
+
+
+/* ================= INICIAR ================= */
+
+actualizarJuego();
+
+
+/* ================= JUGAR ================= */
+
+boton.onclick =
+async function() {
+
+  menu.style.display =
+    "none";
+
+  juego.style.display =
+    "block";
+
+
+  /*
+  INTENTAR PANTALLA COMPLETA
+  (necesario en Chrome/Android
+  para que el bloqueo de
+  orientación funcione)
+  */
+
+  try {
+
+    if (juego.requestFullscreen) {
+
+      await juego.requestFullscreen();
+
+    }
+
+  } catch (error) {
+
+    console.log(
+      "Pantalla completa no disponible"
+    );
+
+  }
+
+
+  /*
+  INTENTAR PONER
+  PANTALLA HORIZONTAL
+  */
+
+  if (
+    screen.orientation &&
+    screen.orientation.lock
+  ) {
+
+    screen.orientation
+      .lock("landscape")
+      .catch(
+        function() {
+
+          console.log(
+            "El navegador no permite bloquear la orientación"
+          );
+
+        }
+      );
+
+  }
+
+};
+
+
+/* ================= SALIR ================= */
+
+salir.onclick =
+function() {
+
+  alert(
+    "¡Hasta la próxima!"
+  );
+
+};
+
+
+/* ================= OPCIONES ================= */
+
+opciones.onclick =
+function() {
+
+  alert(
+    "¡No tiene opciones porque es una pre beta!"
+  );
+
+};
+
+
+</script>
+
+
+</body>
+</html>
