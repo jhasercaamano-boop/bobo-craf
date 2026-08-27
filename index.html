@@ -1,0 +1,3313 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+<title>NEXO</title>
+
+<link rel="manifest" href="manifest.json">
+
+<meta name="theme-color" content="#0a0a0a">
+
+<link rel="apple-touch-icon" href="Muerte.png">
+
+</head>
+
+<body>
+
+
+<!-- ================= GIRAR CELULAR ================= -->
+
+<div id="girapantalla">
+
+  <p>🔄<br>Girá tu celular para jugar</p>
+
+</div>
+
+
+<!-- ================= MENÚ ================= -->
+
+<div id="menu">
+
+  <h1>NEXO</h1>
+
+  <p>esto es una pre beta</p>
+
+  <div id="botonesmenu">
+
+    <button id="jugar">
+      <img src="botondeplay (1).png" id="play">
+    </button>
+
+    <button id="salir">
+      SALIR
+    </button>
+
+    <button id="opciones">
+      OPCIONES
+    </button>
+
+  </div>
+
+</div>
+
+
+
+<!-- ================= JUEGO ================= -->
+
+<div id="pantalladejuego">
+
+
+  <!-- REFUGIO (NIVEL 1) -->
+
+  <div id="camaraRefugio">
+
+    <div id="mundoRefugio">
+
+      <img
+        src="refugio.png"
+        id="fondoRefugio"
+        class="tileMundo"
+      >
+
+      <img
+        src="puerta.png"
+        id="puerta"
+      >
+
+    </div>
+
+  </div>
+
+
+  <!-- MUNDO Y ENEMIGOS -->
+
+  <div id="camara">
+
+    <div id="mundo">
+
+      <img
+        src="mundo.png"
+        id="fondoMundo"
+        class="tileMundo"
+      >
+
+      <img
+        src="mundo.png"
+        id="fondoMundo2"
+        class="tileMundo"
+      >
+
+      <img
+        src="mundo.png"
+        id="fondoMundo3"
+        class="tileMundo"
+      >
+
+      <img
+        src="mundo.png"
+        id="fondoMundo4"
+        class="tileMundo"
+      >
+
+      <img
+        src="enemigo1.png"
+        id="enemigo1"
+        class="enemigo"
+      >
+
+      <img
+        src="enemigo2.png"
+        id="enemigo2"
+        class="enemigo"
+      >
+
+      <img
+        src="enemigo1.png"
+        id="enemigo3"
+        class="enemigo"
+      >
+
+      <img
+        src="enemigo2.png"
+        id="enemigo4"
+        class="enemigo"
+      >
+
+      <img
+        src="enemigo1.png"
+        id="enemigo5"
+        class="enemigo"
+      >
+
+      <img
+        src="enemigo2.png"
+        id="enemigo6"
+        class="enemigo"
+      >
+
+      <img
+        src="enemigo1.png"
+        id="enemigo7"
+        class="enemigo"
+      >
+
+      <img
+        src="jefe1.png"
+        id="jefe"
+      >
+
+    </div>
+
+  </div>
+
+
+  <!-- JEFE (barra de vida) -->
+
+  <div id="jefeUI">
+
+    <div id="jefeNombre">???</div>
+
+    <div id="jefeBarraFondo">
+      <div id="jefeBarraRelleno"></div>
+    </div>
+
+  </div>
+
+
+  <!-- VIDA -->
+
+  <div id="vidaUI">❤️❤️❤️</div>
+
+
+  <!-- NIVEL -->
+
+  <div id="nivelUI">Nivel 1</div>
+
+  <img id="barraExpImg" src="experiencia1.png">
+
+
+  <!-- ULTI -->
+
+  <button id="botonUlti">
+    <span id="rayoIcono">⚡</span>
+    <div id="barraUltiFondo">
+      <div id="barraUltiRelleno"></div>
+    </div>
+  </button>
+
+
+  <!-- GAME OVER -->
+
+  <div id="gameOver">
+
+    <img src="Muerte.png" id="imgMuerte">
+
+    <p>Perdiste</p>
+
+    <button id="reintentar">Reintentar</button>
+
+  </div>
+
+
+  <!-- NIVEL COMPLETADO -->
+
+  <div id="nivelCompletado">
+
+    <p>¡Derrotaste al jefe!</p>
+
+    <button id="seguirJugando">Seguir jugando</button>
+
+  </div>
+
+
+  <!-- JUGADOR -->
+
+  <img
+    src="jugador1.png"
+    id="jugador"
+  >
+
+
+  <!-- ATAQUE -->
+
+  <div id="rayoAtaque"></div>
+
+
+  <!-- CONTROLES IZQUIERDA (ataque y arma) -->
+
+  <div id="armaActualUI">Glock 8/8</div>
+
+  <div id="controlesIzquierda">
+
+    <button id="cambiarArma">
+      🔁
+    </button>
+
+    <button id="recargar">
+      🔄🔫
+    </button>
+
+    <button id="atacar">
+      🔫
+    </button>
+
+  </div>
+
+
+  <!-- CONTROLES -->
+
+  <div id="controles">
+
+    <button id="esquivar">
+      💨
+    </button>
+
+    <button id="saltar">
+      ⬆️
+    </button>
+
+    <button id="izquierda">
+      ⬅️
+    </button>
+
+    <button id="derecha">
+      ➡️
+    </button>
+
+  </div>
+
+</div>
+
+
+
+<style>
+
+
+/* ================= GIRAR CELULAR ================= */
+
+#girapantalla {
+
+  display: none;
+
+  position: fixed;
+  inset: 0;
+
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+
+  background: #0a0a0a;
+
+  color: #ffffff;
+
+  z-index: 999999;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  font-size: 26px;
+
+  font-weight: bold;
+
+  padding: 20px;
+
+  box-sizing: border-box;
+
+}
+
+
+@media (orientation: portrait) {
+
+  #girapantalla {
+
+    display: flex;
+
+  }
+
+}
+
+
+/* ================= GENERAL ================= */
+
+html,
+body {
+
+  margin: 0;
+  padding: 0;
+
+  width: 100%;
+  height: 100%;
+  height: 100dvh;
+
+  overflow: hidden;
+
+}
+
+
+/* ================= MENÚ ================= */
+
+#menu {
+
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+
+  background-image:
+    url("iconomenu.png");
+
+  background-size: 300% auto ;
+
+  background-position: center;
+
+  background-repeat: no-repeat;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  align-items: center;
+
+  text-align: center;
+
+  overflow-y: auto;
+
+  padding: 10px 0;
+
+  box-sizing: border-box;
+
+}
+
+
+#menu h1 {
+
+  font-size: 45px;
+
+  margin-bottom: 10px;
+
+}
+
+
+#menu p {
+
+  font-size: 20px;
+
+  margin-bottom: 25px;
+
+}
+
+
+/* ================= BOTONES DEL MENÚ ================= */
+
+#botonesmenu {
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 25px;
+
+}
+
+
+/* BOTÓN PLAY */
+
+#jugar {
+
+  width: 140px;
+  height: 140px;
+
+  padding: 0;
+  margin: 0;
+
+  border: none;
+
+  background: transparent;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+}
+
+
+/* IMAGEN PLAY */
+
+#play {
+
+  width: 140px;
+  height: 140px;
+
+  display: block;
+
+  object-fit: contain;
+
+}
+
+
+/* BOTONES SALIR Y OPCIONES */
+
+#salir,
+#opciones {
+
+  width: 260px;
+  height: 80px;
+
+  font-size: 28px;
+
+  font-weight: bold;
+
+  border-radius: 12px;
+
+}
+
+
+/* ================= JUEGO ================= */
+
+#pantalladejuego {
+
+  position: relative;
+
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+
+  overflow: hidden;
+
+  display: none;
+
+}
+
+
+/* ================= CÁMARA ================= */
+
+#camara,
+#camaraRefugio {
+
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+
+  z-index: 1;
+
+  display: none;
+
+}
+
+#camara {
+
+  display: block;
+
+}
+
+
+/* ================= MUNDO ================= */
+
+#mundo,
+#mundoRefugio {
+
+  position: absolute;
+
+  left: 0;
+
+  top: 0;
+
+  width: 100%;
+
+  height: 100%;
+
+  background-color: #16112b;
+
+}
+
+
+/* ================= FONDO (una sola imagen) ================= */
+
+/* ================= FONDO (varias copias, mapa más grande) ================= */
+
+.tileMundo {
+
+  position: absolute;
+
+  top: -50px;
+
+  width: 100%;
+
+  height: calc(100% + 50px);
+
+  object-fit: cover;
+
+  object-position: center;
+
+  display: block;
+
+  image-rendering: pixelated;
+
+  pointer-events: none;
+
+  user-select: none;
+
+}
+
+
+/* ================= ENEMIGOS ================= */
+
+.enemigo {
+
+  position: absolute;
+
+  top: 47%;
+
+  width: clamp(45px, 10vh, 100px);
+
+  z-index: 5;
+
+  display: none;
+
+}
+
+
+/* ================= JEFE ================= */
+
+#jefe {
+
+  position: absolute;
+
+  top: 30%;
+
+  width: clamp(120px, 26vh, 260px);
+
+  z-index: 8;
+
+  display: none;
+
+}
+
+
+#jefeUI {
+
+  display: none;
+
+  position: absolute;
+
+  left: 50%;
+
+  top: 10px;
+
+  transform: translateX(-50%);
+
+  z-index: 300;
+
+  text-align: center;
+
+  color: white;
+
+  text-shadow: 0 0 6px black;
+
+}
+
+#jefeNombre {
+
+  font-size: clamp(14px, 3vh, 20px);
+
+  font-weight: bold;
+
+  margin-bottom: 4px;
+
+}
+
+#jefeBarraFondo {
+
+  width: clamp(160px, 30vh, 320px);
+
+  height: 12px;
+
+  background: rgba(255, 255, 255, 0.25);
+
+  border: 2px solid rgba(255, 255, 255, 0.5);
+
+  border-radius: 6px;
+
+  overflow: hidden;
+
+}
+
+#jefeBarraRelleno {
+
+  height: 100%;
+
+  width: 100%;
+
+  background: #ff2b2b;
+
+}
+
+
+/* ================= NIVEL COMPLETADO ================= */
+
+#nivelCompletado {
+
+  display: none;
+
+  position: absolute;
+
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.8);
+
+  color: white;
+
+  z-index: 99998;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 16px;
+
+  text-align: center;
+
+}
+
+#nivelCompletado p {
+
+  font-size: clamp(24px, 5vh, 40px);
+
+  margin: 0;
+
+  padding: 0 20px;
+
+}
+
+#seguirJugando {
+
+  width: 220px;
+
+  height: 55px;
+
+  font-size: 20px;
+
+  font-weight: bold;
+
+  border-radius: 12px;
+
+  border: none;
+
+}
+
+
+/* ================= PUERTA (refugio → ciudad) ================= */
+
+#puerta {
+
+  position: absolute;
+
+  top: 40%;
+
+  width: clamp(55px, 13vh, 120px);
+
+  z-index: 6;
+
+  image-rendering: pixelated;
+
+}
+
+
+/* ================= JUGADOR ================= */
+
+#jugador {
+
+  position: absolute;
+
+  left: 100px;
+
+  top: 47%;
+
+  width: clamp(60px, 14vh, 130px);
+
+  z-index: 100;
+
+}
+
+
+/* ================= CONTROLES ================= */
+
+/* ================= VIDA ================= */
+
+#vidaUI {
+
+  position: absolute;
+
+  left: 15px;
+
+  top: 10px;
+
+  font-size: clamp(18px, 3.5vh, 28px);
+
+  z-index: 200;
+
+  text-shadow: 0 0 6px black;
+
+}
+
+
+/* ================= NIVEL ================= */
+
+#nivelUI {
+
+  position: absolute;
+
+  left: 15px;
+
+  top: clamp(46px, 9.5vh, 64px);
+
+  font-size: clamp(14px, 3vh, 22px);
+
+  font-weight: bold;
+
+  color: white;
+
+  z-index: 200;
+
+  text-shadow: 0 0 6px black;
+
+}
+
+
+#barraExpImg {
+
+  position: absolute;
+
+  left: 15px;
+
+  top: clamp(74px, 15vh, 96px);
+
+  width: clamp(90px, 18vh, 150px);
+
+  height: auto;
+
+  z-index: 200;
+
+  image-rendering: pixelated;
+
+}
+
+
+/* ================= MUNICIÓN TIRADA ================= */
+
+.municionDrop {
+
+  position: absolute;
+
+  top: 47%;
+
+  font-size: clamp(20px, 4vh, 32px);
+
+  z-index: 6;
+
+  pointer-events: none;
+
+  text-shadow: 0 0 8px #00c8ff;
+
+  animation: flotarMunicion 0.8s ease-in-out infinite alternate;
+
+}
+
+@keyframes flotarMunicion {
+
+  from {
+
+    transform: translateY(0px);
+
+  }
+
+  to {
+
+    transform: translateY(-8px);
+
+  }
+
+}
+
+
+/* ================= ULTI ================= */
+
+#botonUlti {
+
+  display: none;
+
+  position: absolute;
+
+  left: 15px;
+
+  top: clamp(96px, 19.5vh, 130px);
+
+  z-index: 200;
+
+  background: rgba(0, 0, 0, 0.4);
+
+  border: 2px solid rgba(255, 255, 255, 0.4);
+
+  border-radius: 10px;
+
+  padding: 4px 8px;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 3px;
+
+}
+
+#rayoIcono {
+
+  font-size: clamp(20px, 4vh, 30px);
+
+  filter: grayscale(1);
+
+  opacity: 0.5;
+
+}
+
+#botonUlti.ultiLista #rayoIcono {
+
+  filter: none;
+
+  opacity: 1;
+
+}
+
+#barraUltiFondo {
+
+  width: 60px;
+
+  height: 8px;
+
+  background: rgba(255, 255, 255, 0.25);
+
+  border-radius: 4px;
+
+  overflow: hidden;
+
+}
+
+#barraUltiRelleno {
+
+  height: 100%;
+
+  width: 0%;
+
+  background: #ffd200;
+
+}
+
+
+.rayoCielo {
+
+  position: absolute;
+
+  top: 0;
+
+  width: 14px;
+
+  height: 100%;
+
+  background: linear-gradient(
+    to bottom,
+    #ffffff,
+    #ffe98a,
+    #ffd200
+  );
+
+  box-shadow: 0 0 20px 6px #fff59d;
+
+  z-index: 5000;
+
+  pointer-events: none;
+
+  transform: scaleY(0);
+
+  transform-origin: top;
+
+  animation: caidaRayo 0.5s ease-out forwards;
+
+}
+
+@keyframes caidaRayo {
+
+  0% {
+
+    transform: scaleY(0);
+
+    opacity: 1;
+
+  }
+
+  60% {
+
+    transform: scaleY(1);
+
+    opacity: 1;
+
+  }
+
+  100% {
+
+    transform: scaleY(1);
+
+    opacity: 0;
+
+  }
+
+}
+
+
+/* ================= GAME OVER ================= */
+
+#gameOver {
+
+  display: none;
+
+  position: absolute;
+
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.75);
+
+  color: white;
+
+  z-index: 99998;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 16px;
+
+  text-align: center;
+
+}
+
+#gameOver p {
+
+  font-size: clamp(28px, 6vh, 48px);
+
+  margin: 0;
+
+}
+
+
+#imgMuerte {
+
+  width: clamp(120px, 30vh, 260px);
+
+  height: auto;
+
+  image-rendering: pixelated;
+
+}
+
+#reintentar {
+
+  width: 180px;
+
+  height: 55px;
+
+  font-size: 20px;
+
+  font-weight: bold;
+
+  border-radius: 12px;
+
+  border: none;
+
+}
+
+
+/* ================= ATAQUE (rayo rojo) ================= */
+
+#rayoAtaque {
+
+  display: none;
+
+  position: absolute;
+
+  top: calc(47% + 45px);
+
+  height: 8px;
+
+  background: red;
+
+  box-shadow: 0 0 10px 2px red;
+
+  border-radius: 4px;
+
+  z-index: 150;
+
+  pointer-events: none;
+
+}
+
+
+#controles,
+#controlesIzquierda {
+
+  position: absolute;
+
+  bottom: 30px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  z-index: 9999;
+
+  pointer-events: none;
+
+}
+
+#controles {
+
+  left: auto;
+
+  right: 20px;
+
+}
+
+#controlesIzquierda {
+
+  left: 20px;
+
+  right: auto;
+
+}
+
+
+#armaActualUI {
+
+  position: absolute;
+
+  left: 20px;
+
+  bottom: clamp(105px, 21vh, 140px);
+
+  color: white;
+
+  font-size: clamp(12px, 2.5vh, 18px);
+
+  font-weight: bold;
+
+  text-shadow: 0 0 6px black;
+
+  text-align: left;
+
+  z-index: 9999;
+
+}
+
+
+#controles button,
+#controlesIzquierda button {
+
+  width: clamp(50px, 9vh, 85px);
+
+  height: clamp(50px, 9vh, 85px);
+
+  font-size: clamp(26px, 5vh, 46px);
+
+  touch-action: none;
+
+  user-select: none;
+
+  -webkit-user-select: none;
+
+  pointer-events: auto;
+
+  background: rgba(255, 255, 255, 0.25);
+
+  border: 2px solid rgba(255, 255, 255, 0.5);
+
+  border-radius: 50%;
+
+}
+
+
+/* ================= RASTRO DEL DASH ================= */
+
+.rastroEsquivar {
+
+  position: absolute;
+
+  top: 47%;
+
+  width: clamp(60px, 14vh, 130px);
+
+  z-index: 90;
+
+  pointer-events: none;
+
+  opacity: 0.5;
+
+  filter: brightness(1.4) saturate(1.6);
+
+  animation: desvanecerRastro 0.3s ease-out forwards;
+
+}
+
+@keyframes desvanecerRastro {
+
+  from {
+
+    opacity: 0.5;
+
+  }
+
+  to {
+
+    opacity: 0;
+
+  }
+
+}
+
+
+/* ================= HORIZONTAL ================= */
+
+@media (orientation: landscape) {
+
+  #pantalladejuego {
+
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+
+  }
+
+
+  #menu {
+
+    justify-content: flex-start;
+
+    padding-top: 12px;
+
+  }
+
+  #menu h1 {
+
+    font-size: 34px;
+
+    margin-bottom: 4px;
+
+  }
+
+  #menu p {
+
+    font-size: 16px;
+
+    margin-bottom: 10px;
+
+  }
+
+  #botonesmenu {
+
+    gap: 14px;
+
+  }
+
+  #jugar {
+
+    width: 95px;
+
+    height: 95px;
+
+  }
+
+  #play {
+
+    width: 95px;
+
+    height: 95px;
+
+  }
+
+  #salir,
+  #opciones {
+
+    width: 210px;
+
+    height: 54px;
+
+    font-size: 20px;
+
+  }
+
+}
+
+</style>
+
+
+
+<script>
+
+
+/* ================= ELEMENTOS ================= */
+
+const boton =
+  document.getElementById("jugar");
+
+
+const salir =
+  document.getElementById("salir");
+
+
+const opciones =
+  document.getElementById("opciones");
+
+
+const menu =
+  document.getElementById("menu");
+
+
+const juego =
+  document.getElementById(
+    "pantalladejuego"
+  );
+
+
+const jugador =
+  document.getElementById(
+    "jugador"
+  );
+
+
+const mundo =
+  document.getElementById(
+    "mundo"
+  );
+
+
+const fondoMundo =
+  document.getElementById(
+    "fondoMundo"
+  );
+
+
+const tilesMundo = [
+  fondoMundo,
+  document.getElementById(
+    "fondoMundo2"
+  ),
+  document.getElementById(
+    "fondoMundo3"
+  ),
+  document.getElementById(
+    "fondoMundo4"
+  )
+];
+
+
+const camara =
+  document.getElementById(
+    "camara"
+  );
+
+
+const camaraRefugio =
+  document.getElementById(
+    "camaraRefugio"
+  );
+
+
+const puerta =
+  document.getElementById(
+    "puerta"
+  );
+
+
+const izquierda =
+  document.getElementById(
+    "izquierda"
+  );
+
+
+const derecha =
+  document.getElementById(
+    "derecha"
+  );
+
+
+const saltar =
+  document.getElementById(
+    "saltar"
+  );
+
+
+const esquivar =
+  document.getElementById(
+    "esquivar"
+  );
+
+
+const atacar =
+  document.getElementById(
+    "atacar"
+  );
+
+
+const botonCambiarArma =
+  document.getElementById(
+    "cambiarArma"
+  );
+
+
+const botonRecargar =
+  document.getElementById(
+    "recargar"
+  );
+
+
+const armaActualUI =
+  document.getElementById(
+    "armaActualUI"
+  );
+
+
+const rayoAtaque =
+  document.getElementById(
+    "rayoAtaque"
+  );
+
+
+const elementosEnemigos = [
+  document.getElementById("enemigo1"),
+  document.getElementById("enemigo2"),
+  document.getElementById("enemigo3"),
+  document.getElementById("enemigo4"),
+  document.getElementById("enemigo5"),
+  document.getElementById("enemigo6"),
+  document.getElementById("enemigo7")
+];
+
+
+const elementoJefe =
+  document.getElementById("jefe");
+
+
+const jefeUI =
+  document.getElementById(
+    "jefeUI"
+  );
+
+
+const jefeBarraRelleno =
+  document.getElementById(
+    "jefeBarraRelleno"
+  );
+
+
+const nivelCompletado =
+  document.getElementById(
+    "nivelCompletado"
+  );
+
+
+const seguirJugando =
+  document.getElementById(
+    "seguirJugando"
+  );
+
+
+const vidaUI =
+  document.getElementById(
+    "vidaUI"
+  );
+
+
+const nivelUI =
+  document.getElementById(
+    "nivelUI"
+  );
+
+
+const barraExpImg =
+  document.getElementById(
+    "barraExpImg"
+  );
+
+
+const botonUlti =
+  document.getElementById(
+    "botonUlti"
+  );
+
+
+const barraUltiRelleno =
+  document.getElementById(
+    "barraUltiRelleno"
+  );
+
+
+const gameOver =
+  document.getElementById(
+    "gameOver"
+  );
+
+
+const reintentar =
+  document.getElementById(
+    "reintentar"
+  );
+
+
+/* ================= POSICIÓN ================= */
+
+let x = 100;
+
+
+/* ================= NIVELES ================= */
+
+let nivelActual = 1;
+
+
+function iniciarNivel1() {
+
+  nivelActual = 1;
+
+  camaraRefugio.style.display =
+    "block";
+
+  camara.style.display = "none";
+
+  x = 100;
+
+  camaraX = 0;
+
+}
+
+
+function iniciarNivel2() {
+
+  nivelActual = 2;
+
+  camaraRefugio.style.display =
+    "none";
+
+  camara.style.display = "block";
+
+  x = 100;
+
+  camaraX = 0;
+
+}
+
+
+/* ================= ENEMIGOS ================= */
+
+const enemigos =
+  elementosEnemigos.map(
+    function (el) {
+
+      return {
+        el: el,
+        x: 0,
+        vivo: false,
+        direccion: -1
+      };
+
+    }
+  );
+
+/* los primeros 2 arrancan
+   activos, como ya estaba */
+
+enemigos[0].x = 420;
+enemigos[0].vivo = true;
+enemigos[0].el.style.display =
+  "block";
+
+enemigos[1].x = 500;
+enemigos[1].vivo = true;
+enemigos[1].el.style.display =
+  "block";
+
+const radioDeteccion = 300;
+
+const velocidadEnemigo = 1.5;
+
+let temporizadorSpawn = 0;
+
+const intervaloSpawnBase = 240;
+
+
+/* ================= JEFE ================= */
+
+const jefe = {
+
+  el: elementoJefe,
+
+  x: 0,
+
+  vivo: false,
+
+  activado: false,
+
+  vidaMax: 12,
+
+  vida: 12,
+
+  direccion: -1
+
+};
+
+const velocidadJefe = 2;
+
+const distanciaAparicionJefe = 700;
+
+const danioAtaqueJefe = 1;
+
+
+function activarJefe(anchoMundoActual) {
+
+  jefe.activado = true;
+
+  jefe.vivo = true;
+
+  jefe.vida = jefe.vidaMax;
+
+  jefe.x =
+    anchoMundoActual -
+    jefe.el.offsetWidth -
+    40;
+
+  jefe.el.style.display =
+    "block";
+
+  jefeUI.style.display = "block";
+
+  jefeBarraRelleno.style.width =
+    "100%";
+
+}
+
+
+function jefeRecibeDanio(cantidad) {
+
+  jefe.vida -= cantidad;
+
+  if (jefe.vida < 0) {
+
+    jefe.vida = 0;
+
+  }
+
+  jefeBarraRelleno.style.width =
+    (jefe.vida / jefe.vidaMax) *
+      100 +
+    "%";
+
+  if (jefe.vida <= 0) {
+
+    jefe.vivo = false;
+
+    jefe.el.style.display =
+      "none";
+
+    jefeUI.style.display = "none";
+
+    juegoTerminado = true;
+
+    nivelCompletado.style.display =
+      "flex";
+
+  }
+
+}
+
+const intervaloSpawnMin = 90;
+
+
+function obtenerIntervaloSpawn() {
+
+  return Math.max(
+    intervaloSpawnMin,
+    intervaloSpawnBase -
+      (nivel - 1) * 15
+  );
+
+}
+
+
+/* ================= VIDA ================= */
+
+let vidas = 3;
+
+let vidasMax = 3;
+
+let invulnerableFrames = 0;
+
+const framesInvulnerabilidad = 90;
+
+let juegoTerminado = false;
+
+let framesSinDanio = 0;
+
+const framesParaRegenerar = 360;
+
+
+function actualizarVidaUI() {
+
+  let corazones = "";
+
+  for (let i = 0; i < vidasMax; i++) {
+
+    corazones +=
+      i < vidas ? "❤️" : "🤍";
+
+  }
+
+  vidaUI.textContent = corazones;
+
+}
+
+
+function recibirDanio() {
+
+  vidas -= 1;
+
+  framesSinDanio = 0;
+
+  invulnerableFrames =
+    framesInvulnerabilidad;
+
+  actualizarVidaUI();
+
+  if (vidas <= 0) {
+
+    juegoTerminado = true;
+
+    jugador.style.opacity = "1";
+
+    gameOver.style.display =
+      "flex";
+
+  }
+
+}
+
+
+reintentar.onclick =
+function() {
+
+  location.reload();
+
+};
+
+
+/* ================= CÁMARA ================= */
+
+let camaraX = 0;
+
+
+/* ================= MOVIMIENTO ================= */
+
+let moviendoIzquierda = false;
+
+let moviendoDerecha = false;
+
+
+/* ================= SALTO ================= */
+
+let saltoY = 0;
+
+let velocidadY = 0;
+
+let saltando = false;
+
+const gravedad = 0.8;
+
+const fuerzaSalto = 15;
+
+const umbralEsquiveSalto = 35;
+
+let direccion = 1;
+
+
+function intentarSaltar() {
+
+  if (!saltando) {
+
+    saltando = true;
+
+    velocidadY = fuerzaSalto;
+
+  }
+
+}
+
+
+/* ================= ESQUIVAR (DASH) ================= */
+
+let esquivando = false;
+
+let framesEsquivar = 0;
+
+const duracionEsquivar = 9;
+
+const velocidadEsquivar = 13;
+
+let cooldownEsquivar = 0;
+
+const cooldownEsquivarMax = 90;
+
+
+function intentarEsquivar() {
+
+  if (
+    !esquivando &&
+    cooldownEsquivar <= 0
+  ) {
+
+    esquivando = true;
+
+    framesEsquivar =
+      duracionEsquivar;
+
+    cooldownEsquivar =
+      cooldownEsquivarMax;
+
+    invulnerableFrames = Math.max(
+      invulnerableFrames,
+      duracionEsquivar + 6
+    );
+
+  }
+
+}
+
+
+/* ================= ARMAS ================= */
+
+const armas = [
+  {
+    nombre: "Glock",
+    rango: 130,
+    color: "red",
+    nivelRequerido: 1,
+    municionMax: 8
+  },
+  {
+    nombre: "Escopeta",
+    rango: 210,
+    color: "#00c8ff",
+    nivelRequerido: 3,
+    municionMax: 5
+  },
+  {
+    nombre: "Arma experimental",
+    rango: 300,
+    color: "#c400ff",
+    nivelRequerido: 6,
+    municionMax: 3
+  }
+];
+
+let armaActualIndex = 0;
+
+let municionActual = armas.map(
+  function (arma) {
+
+    return arma.municionMax;
+
+  }
+);
+
+let recargando = false;
+
+let framesRecarga = 0;
+
+const duracionRecarga = 60;
+
+
+function armaActual() {
+
+  return armas[armaActualIndex];
+
+}
+
+
+function actualizarArmaUI() {
+
+  armaActualUI.textContent =
+    armaActual().nombre +
+    " " +
+    municionActual[
+      armaActualIndex
+    ] +
+    "/" +
+    armaActual().municionMax;
+
+}
+
+
+function cambiarArma() {
+
+  let siguiente = armaActualIndex;
+
+  for (
+    let i = 0;
+    i < armas.length;
+    i++
+  ) {
+
+    siguiente =
+      (siguiente + 1) %
+      armas.length;
+
+    if (
+      nivel >=
+      armas[siguiente]
+        .nivelRequerido
+    ) {
+
+      armaActualIndex = siguiente;
+
+      break;
+
+    }
+
+  }
+
+  armaActualUI.textContent =
+    armaActual().nombre;
+
+  actualizarArmaUI();
+
+}
+
+
+function intentarRecargar() {
+
+  if (
+    !recargando &&
+    municionActual[
+      armaActualIndex
+    ] <
+      armaActual().municionMax
+  ) {
+
+    recargando = true;
+
+    framesRecarga =
+      duracionRecarga;
+
+    armaActualUI.textContent =
+      "Recargando...";
+
+  }
+
+}
+
+
+/* ================= MUNICIÓN QUE SUELTAN LOS ENEMIGOS ================= */
+
+let pickupsMunicion = [];
+
+const probabilidadDropMunicion = 0.35;
+
+const municionPorPickup = 2;
+
+const duracionPickupMs = 10000;
+
+
+function talVezSoltarMunicion(x) {
+
+  if (
+    Math.random() >
+    probabilidadDropMunicion
+  ) {
+
+    return;
+
+  }
+
+  const elementoPickup =
+    document.createElement("div");
+
+  elementoPickup.className =
+    "municionDrop";
+
+  elementoPickup.textContent = "🔹";
+
+  elementoPickup.style.left =
+    x + "px";
+
+  mundo.appendChild(
+    elementoPickup
+  );
+
+  const pickup = {
+    el: elementoPickup,
+    x: x,
+    recogido: false
+  };
+
+  pickupsMunicion.push(pickup);
+
+  setTimeout(function () {
+
+    if (!pickup.recogido) {
+
+      pickup.el.remove();
+
+      const indice =
+        pickupsMunicion.indexOf(
+          pickup
+        );
+
+      if (indice !== -1) {
+
+        pickupsMunicion.splice(
+          indice,
+          1
+        );
+
+      }
+
+    }
+
+  }, duracionPickupMs);
+
+}
+
+
+/* ================= ATAQUE ================= */
+
+let atacando = false;
+
+let framesAtaque = 0;
+
+let golpeAplicado = false;
+
+const duracionAtaque = 12;
+
+let enfriamientoAtaque = 0;
+
+const cooldownBaseAtaque = 30;
+
+const cooldownMinAtaque = 8;
+
+
+function obtenerCooldownAtaque() {
+
+  return Math.max(
+    cooldownMinAtaque,
+    cooldownBaseAtaque -
+      (nivel - 1) * 3
+  );
+
+}
+
+
+function intentarAtacar() {
+
+  if (
+    !atacando &&
+    !recargando &&
+    enfriamientoAtaque <= 0 &&
+    municionActual[
+      armaActualIndex
+    ] > 0
+  ) {
+
+    atacando = true;
+
+    framesAtaque = duracionAtaque;
+
+    golpeAplicado = false;
+
+    enfriamientoAtaque =
+      obtenerCooldownAtaque();
+
+    municionActual[
+      armaActualIndex
+    ] -= 1;
+
+    actualizarArmaUI();
+
+  }
+
+}
+
+
+/* ================= NIVEL Y EXPERIENCIA ================= */
+
+let experiencia = 0;
+
+let nivel = 1;
+
+const killsPorNivel = 5;
+
+const nivelUlti = 5;
+
+
+function actualizarNivelUI() {
+
+  nivelUI.textContent =
+    "Nivel " + nivel;
+
+  if (nivel >= nivelUlti) {
+
+    botonUlti.style.display =
+      "flex";
+
+  }
+
+  const nuevoMax = Math.min(
+    6,
+    3 + Math.floor((nivel - 1) / 2)
+  );
+
+  if (nuevoMax > vidasMax) {
+
+    vidasMax = nuevoMax;
+
+    vidas = Math.min(
+      vidasMax,
+      vidas + 1
+    );
+
+    actualizarVidaUI();
+
+  }
+
+}
+
+
+function ganarExperiencia() {
+
+  experiencia += 1;
+
+  const nivelNuevo =
+    1 +
+    Math.floor(
+      experiencia / killsPorNivel
+    );
+
+  if (nivelNuevo > nivel) {
+
+    nivel = nivelNuevo;
+
+    actualizarNivelUI();
+
+  }
+
+  const progresoNivelActual =
+    experiencia % killsPorNivel;
+
+  const fraccion =
+    progresoNivelActual /
+    killsPorNivel;
+
+  const frame = Math.min(
+    12,
+    Math.floor(fraccion * 12) + 1
+  );
+
+  barraExpImg.src =
+    "experiencia" + frame + ".png";
+
+  if (nivel >= nivelUlti) {
+
+    ganarCargaUlti();
+
+  }
+
+}
+
+
+/* ================= ULTI ================= */
+
+let ultiCarga = 0;
+
+const ultiCargaPorKill = 25;
+
+
+function ganarCargaUlti() {
+
+  ultiCarga = Math.min(
+    100,
+    ultiCarga + ultiCargaPorKill
+  );
+
+  barraUltiRelleno.style.width =
+    ultiCarga + "%";
+
+  if (ultiCarga >= 100) {
+
+    botonUlti.classList.add(
+      "ultiLista"
+    );
+
+  }
+
+}
+
+
+/* ================= TECLADO ================= */
+
+document.addEventListener(
+  "keydown",
+  function(event) {
+
+
+    if (event.key === "ArrowRight") {
+
+      x += 10;
+
+      direccion = 1;
+
+    }
+
+
+    if (event.key === "ArrowLeft") {
+
+      if (x > 0) {
+
+        x -= 10;
+
+        if (x < 0) {
+
+          x = 0;
+
+        }
+
+        direccion = -1;
+
+      }
+
+    }
+
+
+    if (event.key === "ArrowUp" || event.key === " ") {
+
+      intentarSaltar();
+
+    }
+
+  }
+);
+
+
+/* ================= DERECHA ================= */
+
+derecha.onpointerdown =
+function(event) {
+
+  event.preventDefault();
+
+  moviendoDerecha = true;
+
+  derecha.setPointerCapture(
+    event.pointerId
+  );
+
+};
+
+
+derecha.onpointerup =
+function(event) {
+
+  event.preventDefault();
+
+  moviendoDerecha = false;
+
+};
+
+
+derecha.onpointercancel =
+function() {
+
+  moviendoDerecha = false;
+
+};
+
+
+/* ================= IZQUIERDA ================= */
+
+izquierda.onpointerdown =
+function(event) {
+
+  event.preventDefault();
+
+  moviendoIzquierda = true;
+
+  izquierda.setPointerCapture(
+    event.pointerId
+  );
+
+};
+
+
+izquierda.onpointerup =
+function(event) {
+
+  event.preventDefault();
+
+  moviendoIzquierda = false;
+
+};
+
+
+izquierda.onpointercancel =
+function() {
+
+  moviendoIzquierda = false;
+
+};
+
+
+/* ================= SALTAR ================= */
+
+saltar.onpointerdown =
+function(event) {
+
+  event.preventDefault();
+
+  intentarSaltar();
+
+  saltar.setPointerCapture(
+    event.pointerId
+  );
+
+};
+
+
+esquivar.onpointerdown =
+function(event) {
+
+  event.preventDefault();
+
+  intentarEsquivar();
+
+  esquivar.setPointerCapture(
+    event.pointerId
+  );
+
+};
+
+
+/* ================= ATACAR ================= */
+
+atacar.onpointerdown =
+function(event) {
+
+  event.preventDefault();
+
+  intentarAtacar();
+
+  atacar.setPointerCapture(
+    event.pointerId
+  );
+
+};
+
+
+botonCambiarArma.onpointerdown =
+function(event) {
+
+  event.preventDefault();
+
+  cambiarArma();
+
+  botonCambiarArma.setPointerCapture(
+    event.pointerId
+  );
+
+};
+
+
+botonRecargar.onpointerdown =
+function(event) {
+
+  event.preventDefault();
+
+  intentarRecargar();
+
+  botonRecargar.setPointerCapture(
+    event.pointerId
+  );
+
+};
+
+
+/* ================= ULTI ================= */
+
+function usarUlti() {
+
+  if (ultiCarga < 100) {
+
+    return;
+
+  }
+
+  ultiCarga = 0;
+
+  barraUltiRelleno.style.width =
+    "0%";
+
+  botonUlti.classList.remove(
+    "ultiLista"
+  );
+
+  const cantidadRayos = 6;
+
+  const anchoFranja =
+    window.innerWidth /
+    cantidadRayos;
+
+  for (
+    let i = 0;
+    i < cantidadRayos;
+    i++
+  ) {
+
+    const rayo =
+      document.createElement(
+        "div"
+      );
+
+    rayo.className = "rayoCielo";
+
+    rayo.style.left =
+      (anchoFranja * i +
+        anchoFranja / 2) + "px";
+
+    juego.appendChild(rayo);
+
+    (function (elementoRayo) {
+
+      setTimeout(function () {
+
+        elementoRayo.remove();
+
+      }, 500);
+
+    })(rayo);
+
+  }
+
+  for (
+    let i = 0;
+    i < enemigos.length;
+    i++
+  ) {
+
+    const e = enemigos[i];
+
+    if (e.vivo) {
+
+      e.vivo = false;
+
+      e.el.style.display = "none";
+
+      ganarExperiencia();
+
+      talVezSoltarMunicion(e.x);
+
+    }
+
+  }
+
+}
+
+
+botonUlti.onpointerdown =
+function(event) {
+
+  event.preventDefault();
+
+  usarUlti();
+
+};
+
+
+/* ================= SOLTAR ================= */
+
+/* (el manejo de soltar ya lo hace cada botón individualmente
+   con onpointerup/onpointercancel — un listener global acá
+   cancelaba el movimiento al soltar CUALQUIER botón, incluido
+   saltar o atacar) */
+
+
+/* ================= CÁMARA ================= */
+
+function actualizarJuego() {
+
+
+  if (juegoTerminado) {
+
+    requestAnimationFrame(
+      actualizarJuego
+    );
+
+    return;
+
+  }
+
+
+  /* DERECHA */
+
+  if (moviendoDerecha) {
+
+    x += 3;
+
+    direccion = 1;
+
+  }
+
+
+  /* IZQUIERDA */
+
+  if (moviendoIzquierda) {
+
+    if (x > 0) {
+
+      x -= 3;
+
+      if (x < 0) {
+
+        x = 0;
+
+      }
+
+      direccion = -1;
+
+    }
+
+  }
+
+
+  /* SALTO (física simple) */
+
+  if (saltando) {
+
+    saltoY += velocidadY;
+
+    velocidadY -= gravedad;
+
+    if (saltoY <= 0) {
+
+      saltoY = 0;
+
+      velocidadY = 0;
+
+      saltando = false;
+
+    }
+
+  }
+
+
+  /* ESQUIVAR (DASH) */
+
+  if (cooldownEsquivar > 0) {
+
+    cooldownEsquivar -= 1;
+
+  }
+
+  if (esquivando) {
+
+    framesEsquivar -= 1;
+
+    x += velocidadEsquivar * direccion;
+
+    if (x < 0) {
+
+      x = 0;
+
+    }
+
+    if (framesEsquivar % 2 === 0) {
+
+      const rastro =
+        document.createElement(
+          "img"
+        );
+
+      rastro.src =
+        "jugador1.png";
+
+      rastro.className =
+        "rastroEsquivar";
+
+      rastro.style.left =
+        jugador.style.left;
+
+      rastro.style.transform =
+        jugador.style.transform;
+
+      juego.appendChild(rastro);
+
+      (function (elementoRastro) {
+
+        setTimeout(function () {
+
+          elementoRastro.remove();
+
+        }, 300);
+
+      })(rastro);
+
+    }
+
+    if (framesEsquivar <= 0) {
+
+      esquivando = false;
+
+    }
+
+  }
+
+
+  /*
+  MAPA MÁS GRANDE
+  (varias copias del fondo
+  una al lado de la otra)
+  */
+
+  const anchoTile =
+    fondoMundo.offsetWidth;
+
+  for (
+    let i = 0;
+    i < tilesMundo.length;
+    i++
+  ) {
+
+    tilesMundo[i].style.left =
+      (anchoTile * i) + "px";
+
+  }
+
+  const anchoMundo =
+    anchoTile *
+    tilesMundo.length;
+
+
+  /* APARICIÓN GRADUAL (máximo 7, van reapareciendo, más rápido con el nivel) */
+
+  temporizadorSpawn += 1;
+
+  if (
+    temporizadorSpawn >=
+    obtenerIntervaloSpawn()
+  ) {
+
+    temporizadorSpawn = 0;
+
+    for (
+      let i = 0;
+      i < enemigos.length;
+      i++
+    ) {
+
+      if (!enemigos[i].vivo) {
+
+        enemigos[i].vivo = true;
+
+        enemigos[i].x =
+          x +
+          500 +
+          Math.floor(
+            Math.random() * 300
+          );
+
+        enemigos[i].el.style.display =
+          "block";
+
+        break;
+
+      }
+
+    }
+
+  }
+
+
+  /* ENEMIGOS PERSIGUEN AL JUGADOR (solo si está cerca) */
+
+  for (
+    let i = 0;
+    i < enemigos.length;
+    i++
+  ) {
+
+    const e = enemigos[i];
+
+    if (!e.vivo) {
+
+      continue;
+
+    }
+
+    if (
+      Math.abs(x - e.x) <
+      radioDeteccion
+    ) {
+
+      if (
+        Math.abs(x - e.x) >
+        velocidadEnemigo
+      ) {
+
+        if (x > e.x) {
+
+          e.x += velocidadEnemigo;
+
+          e.direccion = 1;
+
+        } else {
+
+          e.x -= velocidadEnemigo;
+
+          e.direccion = -1;
+
+        }
+
+      }
+
+    }
+
+  }
+
+
+  /* QUE NO SE AMONTONEN ENTRE ELLOS */
+
+  for (
+    let i = 0;
+    i < enemigos.length;
+    i++
+  ) {
+
+    if (!enemigos[i].vivo) {
+
+      continue;
+
+    }
+
+    for (
+      let j = i + 1;
+      j < enemigos.length;
+      j++
+    ) {
+
+      if (!enemigos[j].vivo) {
+
+        continue;
+
+      }
+
+      const distancia =
+        enemigos[j].x -
+        enemigos[i].x;
+
+      if (Math.abs(distancia) < 45) {
+
+        if (distancia >= 0) {
+
+          enemigos[i].x -= 1;
+
+          enemigos[j].x += 1;
+
+        } else {
+
+          enemigos[i].x += 1;
+
+          enemigos[j].x -= 1;
+
+        }
+
+      }
+
+    }
+
+  }
+
+
+  /* QUE NO SE SALGAN DEL MAPA, Y APLICAR POSICIÓN/DIRECCIÓN */
+
+  for (
+    let i = 0;
+    i < enemigos.length;
+    i++
+  ) {
+
+    const e = enemigos[i];
+
+    if (!e.vivo) {
+
+      continue;
+
+    }
+
+    if (e.x < 0) {
+
+      e.x = 0;
+
+    }
+
+    if (
+      anchoMundo > 0 &&
+      e.x >
+        anchoMundo - e.el.offsetWidth
+    ) {
+
+      e.x =
+        anchoMundo -
+        e.el.offsetWidth;
+
+    }
+
+    e.el.style.left = e.x + "px";
+
+    e.el.style.transform =
+      "scaleX(" + e.direccion + ")";
+
+  }
+
+
+  /* RECARGA */
+
+  if (recargando) {
+
+    framesRecarga -= 1;
+
+    if (framesRecarga <= 0) {
+
+      recargando = false;
+
+      municionActual[
+        armaActualIndex
+      ] =
+        armaActual().municionMax;
+
+      actualizarArmaUI();
+
+    }
+
+  }
+
+
+  /* RECOGER MUNICIÓN TIRADA */
+
+  for (
+    let i = 0;
+    i < pickupsMunicion.length;
+    i++
+  ) {
+
+    const pickup =
+      pickupsMunicion[i];
+
+    if (
+      !pickup.recogido &&
+      Math.abs(x - pickup.x) < 40
+    ) {
+
+      pickup.recogido = true;
+
+      pickup.el.remove();
+
+      for (
+        let j = 0;
+        j < armas.length;
+        j++
+      ) {
+
+        municionActual[j] =
+          Math.min(
+            armas[j].municionMax,
+            municionActual[j] +
+              municionPorPickup
+          );
+
+      }
+
+      actualizarArmaUI();
+
+    }
+
+  }
+
+  pickupsMunicion =
+    pickupsMunicion.filter(
+      function (p) {
+
+        return !p.recogido;
+
+      }
+    );
+
+
+  /* ATAQUE (rayo rojo) */
+
+  if (enfriamientoAtaque > 0) {
+
+    enfriamientoAtaque -= 1;
+
+  }
+
+  if (atacando) {
+
+    framesAtaque -= 1;
+
+    const rangoArmaActual =
+      armaActual().rango;
+
+    let inicioRayo;
+
+    if (direccion === 1) {
+
+      inicioRayo =
+        (x - camaraX) +
+        jugador.offsetWidth;
+
+    } else {
+
+      inicioRayo =
+        (x - camaraX) -
+        rangoArmaActual;
+
+    }
+
+    rayoAtaque.style.display =
+      "block";
+
+    rayoAtaque.style.left =
+      inicioRayo + "px";
+
+    rayoAtaque.style.width =
+      rangoArmaActual + "px";
+
+    rayoAtaque.style.background =
+      armaActual().color;
+
+    rayoAtaque.style.boxShadow =
+      "0 0 10px 2px " +
+      armaActual().color;
+
+    rayoAtaque.style.transform =
+      "translateY(-" +
+      saltoY +
+      "px)";
+
+    if (!golpeAplicado) {
+
+      golpeAplicado = true;
+
+      let rangoIzq;
+      let rangoDer;
+
+      if (direccion === 1) {
+
+        rangoIzq =
+          x + jugador.offsetWidth;
+
+        rangoDer =
+          rangoIzq +
+          rangoArmaActual;
+
+      } else {
+
+        rangoDer = x;
+
+        rangoIzq =
+          x - rangoArmaActual;
+
+      }
+
+      for (
+        let i = 0;
+        i < enemigos.length;
+        i++
+      ) {
+
+        const e = enemigos[i];
+
+        if (!e.vivo) {
+
+          continue;
+
+        }
+
+        const centroEnemigo =
+          e.x +
+          e.el.offsetWidth / 2;
+
+        if (
+          centroEnemigo > rangoIzq &&
+          centroEnemigo < rangoDer
+        ) {
+
+          e.vivo = false;
+
+          e.el.style.display =
+            "none";
+
+          ganarExperiencia();
+
+          talVezSoltarMunicion(e.x);
+
+        }
+
+      }
+
+    }
+
+    if (framesAtaque <= 0) {
+
+      atacando = false;
+
+      rayoAtaque.style.display =
+        "none";
+
+    }
+
+  }
+
+
+  /* DAÑO POR CONTACTO (superposición real, no distancia fija) */
+
+  function seSuperponen(
+    enemigo,
+    enemigoX
+  ) {
+
+    const margen = 0.3;
+
+    const anchoJugador =
+      jugador.offsetWidth *
+      (1 - margen);
+
+    const anchoEnemigo =
+      enemigo.offsetWidth *
+      (1 - margen);
+
+    const jugadorIzq =
+      x +
+      (jugador.offsetWidth -
+        anchoJugador) /
+        2;
+
+    const jugadorDer =
+      jugadorIzq + anchoJugador;
+
+    const enemigoIzq =
+      enemigoX +
+      (enemigo.offsetWidth -
+        anchoEnemigo) /
+        2;
+
+    const enemigoDer =
+      enemigoIzq + anchoEnemigo;
+
+    return (
+      jugadorIzq < enemigoDer &&
+      jugadorDer > enemigoIzq
+    );
+
+  }
+
+
+  if (invulnerableFrames > 0) {
+
+    invulnerableFrames -= 1;
+
+    jugador.style.opacity =
+      (Math.floor(
+        invulnerableFrames / 5
+      ) % 2 === 0)
+        ? "0.3"
+        : "1";
+
+  } else {
+
+    jugador.style.opacity = "1";
+
+    const saltoSuficiente =
+      saltoY >
+      umbralEsquiveSalto;
+
+    if (!saltoSuficiente) {
+
+      for (
+        let i = 0;
+        i < enemigos.length;
+        i++
+      ) {
+
+        const e = enemigos[i];
+
+        if (
+          e.vivo &&
+          seSuperponen(e.el, e.x)
+        ) {
+
+          recibirDanio();
+
+          break;
+
+        }
+
+      }
+
+    }
+
+  }
+
+
+  /* REGENERACIÓN DE VIDA CON EL TIEMPO */
+
+  if (vidas < vidasMax) {
+
+    framesSinDanio += 1;
+
+    if (
+      framesSinDanio >=
+      framesParaRegenerar
+    ) {
+
+      framesSinDanio = 0;
+
+      vidas += 1;
+
+      actualizarVidaUI();
+
+    }
+
+  }
+
+
+  const camaraMax =
+    Math.max(
+      0,
+      anchoMundo -
+        window.innerWidth
+    );
+
+
+  /*
+  CÁMARA SIGUE AL JUGADOR
+  */
+
+  camaraX =
+    x -
+    (window.innerWidth / 2);
+
+
+  if (camaraX < 0) {
+
+    camaraX = 0;
+
+  }
+
+
+  if (camaraX > camaraMax) {
+
+    camaraX = camaraMax;
+
+  }
+
+
+  if (
+    anchoMundo > 0 &&
+    x > anchoMundo - jugador.offsetWidth
+  ) {
+
+    x =
+      anchoMundo -
+      jugador.offsetWidth;
+
+  }
+
+
+  /*
+  MOVEMOS EL MUNDO
+  */
+
+  mundo.style.transform =
+    "translateX(" +
+    (-camaraX) +
+    "px)";
+
+
+  /*
+  JUGADOR VISIBLE
+  */
+
+  jugador.style.left =
+    (x - camaraX) +
+    "px";
+
+  jugador.style.transform =
+    "translateY(-" +
+    saltoY +
+    "px) scaleX(" +
+    direccion +
+    ")";
+
+
+  requestAnimationFrame(
+    actualizarJuego
+  );
+
+}
+
+
+/* ================= INICIAR ================= */
+
+actualizarJuego();
+
+
+/* ================= JUGAR ================= */
+
+boton.onclick =
+async function() {
+
+  menu.style.display =
+    "none";
+
+  juego.style.display =
+    "block";
+
+  iniciarNivel2();
+
+
+  /*
+  INTENTAR PANTALLA COMPLETA
+  (necesario en Chrome/Android
+  para que el bloqueo de
+  orientación funcione)
+  */
+
+  try {
+
+    if (juego.requestFullscreen) {
+
+      await juego.requestFullscreen();
+
+    }
+
+  } catch (error) {
+
+    console.log(
+      "Pantalla completa no disponible"
+    );
+
+  }
+
+
+  /*
+  INTENTAR PONER
+  PANTALLA HORIZONTAL
+  */
+
+  if (
+    screen.orientation &&
+    screen.orientation.lock
+  ) {
+
+    screen.orientation
+      .lock("landscape")
+      .catch(
+        function() {
+
+          console.log(
+            "El navegador no permite bloquear la orientación"
+          );
+
+        }
+      );
+
+  }
+
+};
+
+
+/* ================= SALIR ================= */
+
+salir.onclick =
+function() {
+
+  alert(
+    "¡Hasta la próxima!"
+  );
+
+};
+
+
+/* ================= OPCIONES ================= */
+
+opciones.onclick =
+function() {
+
+  alert(
+    "¡No tiene opciones porque es una pre beta!"
+  );
+
+};
+
+
+/* ================= PWA ================= */
+
+if ("serviceWorker" in navigator) {
+
+  window.addEventListener(
+    "load",
+    function () {
+
+      navigator.serviceWorker
+        .register("sw.js")
+        .catch(function () {
+
+          console.log(
+            "Service worker no disponible"
+          );
+
+        });
+
+    }
+  );
+
+}
+
+
+</script>
+
+
+</body>
+</html>
